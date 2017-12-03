@@ -1,4 +1,11 @@
+import 'es6-promise/auto'
 import Vue from 'vue'
+import Vuex from 'vuex'
+// import 'es6-set/implement'
+// import VueMaterial from 'vue-material'
+Vue.use(Vuex)
+
+// Vue.use(VueMaterial)
 
 Vue.config.productionTip = false
 

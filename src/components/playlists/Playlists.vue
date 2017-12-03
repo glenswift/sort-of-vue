@@ -1,12 +1,20 @@
 <template>
-  <div class="hello">
-    <h2>think you smart?</h2>
-    <div v-if="isPlaylistsFetched">
-      <p v-for="playlist in playlists">
-        <router-link :to="{ name: 'Playlist', params: {user: user, id: playlist.id} }">
-          {{playlist.name}}
-        </router-link>
-      </p>
+  <div v-if="isPlaylistsFetched">
+    <div v-for="playlist in playlists">
+      <router-link :to="{ name: 'Playlist', params: {user: user, id: playlist.id} }">
+        <md-card >
+          <md-card-header>
+            <md-card-header-text>
+              <div class="md-title">{{playlist.name}}</div>
+              <div class="md-subhead">playlist</div>
+            </md-card-header-text>
+
+            <md-card-media>
+              <img :src="playlist.images[0].url" />
+            </md-card-media>
+          </md-card-header>
+        </md-card>
+      </router-link>
     </div>
   </div>
 </template>
@@ -39,5 +47,8 @@ export default {
 </script>
 
 <style scoped>
-
+  a {
+    text-decoration: none !important;
+    color: inherit;
+  }
 </style>

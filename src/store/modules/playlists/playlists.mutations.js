@@ -29,6 +29,10 @@ export const mutations = {
     }
   },
 
+  [types.FETCH_PLAYLIST_BY_ID_FAILED] (state, { user, id }) {
+
+  },
+
   [types.FETCH_PLAYLISTS_BY_USER] (state, { user }) {
     state.fetching.playlistsByUser = {
       ...state.fetching.playlistsByUser,

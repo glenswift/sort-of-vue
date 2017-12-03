@@ -1,12 +1,31 @@
 <template>
-  <div v-if="isPlaylistFetched">
-    {{playlist.name}}
-    <hr />
-    <div v-if="isPlaylistTracksFetched">
-      <p v-for="track in tracks">
-        {{track.name}} <a @click="deleteTrack(track)" href="javascript:void(0)">Delete nahui</a>
-      </p>
-    </div>
+  <div>
+      <div v-if="isPlaylistFetched">
+          <div>{{playlist.name}}</div>
+          <div v-if="isPlaylistTracksFetched" class="tracks">
+              <div v-for="track in tracks">
+                  <md-card>
+                      <md-card-header>
+                          <md-card-header-text>
+                              <div class="md-title">{{track.name}}</div>
+                              <div class="md-subhead">{{track.artists[0].name}}</div>
+                          </md-card-header-text>
+
+                          <md-card-media>
+                              <img :src="track.album.images[0].url"/>
+                          </md-card-media>
+                      </md-card-header>
+                      <md-card-actions>
+                          <md-button
+                              @click="deleteTrack(track)"
+                          >
+                              Delete
+                          </md-button>
+                      </md-card-actions>
+                  </md-card>
+              </div>
+          </div>
+      </div>
   </div>
 </template>
 

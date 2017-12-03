@@ -1,24 +1,37 @@
 <template>
-  <div>
-    <a
-      v-show="!isAuthorized"
-      @click="startSignFlow()"
-      href="javascript:void(0)"
-    >login</a>
-    <div v-if="isAuthorized && isProfileFetched">
-      <a @click="signOut()" href="javascript:void(0)">logout</a>
-      <router-link :to="{ name: 'Playlists', params: {user: profile.id}}">
-        {{profile.display_name}}
-
-      </router-link>
-
-      <div>
-        <router-view></router-view>
+  <md-app>
+    <md-app-toolbar class="md-primary">
+      <span class="md-title">This is sort of vue</span>
+    </md-app-toolbar>
+    <md-app-content>
+      <md-button
+          v-show="!isAuthorized"
+          @click="startSignFlow()"
+          class="md-raised"
+      >
+        Login
+      </md-button>
+      <md-button
+          v-show="isAuthorized && isProfileFetched"
+          @click="signOut()"
+          class="md-raised"
+      >
+        Logout
+      </md-button>
+      <hr />
+      <div v-if="isAuthorized && isProfileFetched">
+          <h2>
+            <span>check playlists of</span>
+            <router-link :to="{ name: 'Playlists', params: {user: profile.id}}">
+              {{profile.display_name}}
+            </router-link>
+          </h2>
+        <div>
+          <router-view></router-view>
+        </div>
       </div>
-    </div>
-    <div>or check it {{isProfileFetched}}</div>
-    <hr />
-  </div>
+    </md-app-content>
+  </md-app>
 </template>
 
 <script>

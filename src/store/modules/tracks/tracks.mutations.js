@@ -27,12 +27,10 @@ export const mutations = {
       ...state.fetching.tracksByPlaylist,
       [id]: false,
     }
-    console.log('true')
     state.fetched.tracksByPlaylist = {
       ...state.fetched.tracksByPlaylist,
       [id]: true,
     }
-    console.log(state)
     state = _.reduce(tracks.items, (memo, { track }) => {
       memo.fetched.tracksById = {
         ...memo.fetched.tracksById,

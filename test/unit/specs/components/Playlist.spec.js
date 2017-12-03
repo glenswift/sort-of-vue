@@ -66,6 +66,9 @@ describe('Playlist.vue', () => {
       },
       store,
     })
+    // vuex docs recommends using vuex.nextTick() for such cases.
+    // but I don't really understand how it supposes to help in case we have inconsistent state setting order
+    // with multiple ticks. So, I just paste setTimeout for now.
     setTimeout(() => {
       expect(wrapper.html()).to.contain('Something')
       done()
